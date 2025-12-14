@@ -65,6 +65,13 @@ def ver_resultado(token):
     </body>
     </html>
     """
+@app.route("/admin-links")
+def admin_links():
+    html = "<h2>Links del Amigo Invisible</h2><ul>"
+    for token in tokens.keys():
+        html += f"<li>https://amigo-invisible-k2e0.onrender.com/{token}</li>"
+    html += "</ul>"
+    return html
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
