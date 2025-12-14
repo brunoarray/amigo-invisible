@@ -36,7 +36,7 @@ def sorteo_seguro(personas):
 
 resultado = sorteo_seguro(PERSONAS)
 
-# Token -> amigo invisible (se borra al verse)
+# Token -> amigo invisible (persistente)
 tokens = {}
 
 for persona, amigo in resultado.items():
@@ -56,17 +56,18 @@ def ver_resultado(token):
     if token not in tokens:
         abort(404)
 
-    amigo = tokens.pop(token)  # solo una vez
+    amigo = tokens[token]  # ✅ NO se borra
 
     return f"""
     <html>
     <body style='font-family: Arial; text-align:center; margin-top:50px;'>
         <h1>🎁 Tu amigo invisible es:</h1>
         <h2 style='color:green'>{amigo}</h2>
-        <p>No compartas este resultado 😉</p>
+        <p>Guardá este resultado 😉</p>
     </body>
     </html>
     """
+
 @app.route("/admin-links")
 def admin_links():
     html = "<h2>Links del Amigo Invisible</h2><ul>"
