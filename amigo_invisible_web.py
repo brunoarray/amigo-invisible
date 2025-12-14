@@ -6,6 +6,8 @@ import random
 import secrets
 import datetime
 
+print("🔥 VERSION CON /admin-links CARGADA 🔥")
+
 app = Flask(__name__)
 
 # ================= CONFIGURACIÓN =================
